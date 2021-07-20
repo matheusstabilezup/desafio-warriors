@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: br.com.zup
+testFramework: kotest
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, data, data-jpa, gradle, h2, http-client, jdbc-hikari, kotest, kotlin, kotlin-application, logback, netty-server, readme, shade, yaml]
