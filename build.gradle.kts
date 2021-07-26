@@ -35,9 +35,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
-    compile("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.cassandra:micronaut-cassandra")
+
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

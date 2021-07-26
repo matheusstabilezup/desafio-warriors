@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+  scylla-node1:
+    image: scylladb/scylla:4.4.0
+    restart: always
+    command: --smp 1 --memory 750M
+
+  scylla-node2:
+    image: scylladb/scylla:4.4.0
+    restart: always
+    command: --seeds=scylla-node1 --smp 1 --memory 750M
+
+  scylla-node3:
+    image: scylladb/scylla:4.4.0
+    restart: always
+    command: --seeds=scylla-node1 --smp 1 --memory 750M

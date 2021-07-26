@@ -9,22 +9,13 @@ endpoints:
   health:
     enabled: true
 
-datasources:
+cassandra:
   default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-    schema-generate: CREATE_DROP
-    dialect: H2
-
-jpa:
-  default:
-    properties:
-      hibernate:
-        show_sql: false
-        format_sql: false
-        hbm2ddl:
-          auto: update
-
-
+    basic:
+      contact-points:
+        - "172.19.0.4:9042"
+        - "172.19.0.3:9042"
+        - "172.19.0.2:9042"
+      session-keyspace: ${scylladb_session_keyspace:product}
+      load-balancing-policy:
+        local-datacenter: ${scylladb_local_datacenter:datacenter1}

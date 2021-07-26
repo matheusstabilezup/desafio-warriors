@@ -3,6 +3,7 @@ package br.com.zup.core.mapper
 import br.com.zup.core.model.Product
 import br.com.zup.database.entity.ProductEntity
 import br.com.zup.entrypoint.dto.ProductDto
+import java.util.*
 
 class ProductConverter {
     companion object {
@@ -18,7 +19,7 @@ class ProductConverter {
             productEntity.stock
         )
 
-        fun toProductWithId(id: Long, dto: ProductDto) =
+        fun toProductWithId(id: UUID, dto: ProductDto) =
             Product(id, dto.name, dto.description, dto.category, dto.price, dto.stock)
 
         fun toDto(product: Product) =

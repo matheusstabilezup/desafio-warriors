@@ -4,6 +4,7 @@ import br.com.zup.core.mapper.ProductConverter
 import br.com.zup.core.model.Product
 import br.com.zup.core.port.ProductRepositoryPort
 import br.com.zup.core.port.ProductServicePort
+import java.util.*
 import javax.inject.Singleton
 
 @Singleton
@@ -13,9 +14,9 @@ class ProductService(private val productRepository: ProductRepositoryPort) : Pro
 
     override fun findAll() = productRepository.findAll()
 
-    override fun findById(id: Long) = productRepository.findById(id)
+    override fun findById(id: UUID) = productRepository.findById(id)
 
     override fun update(product: Product) = productRepository.update(ProductConverter.toEntity(product))
 
-    override fun delete(id: Long) = productRepository.delete(id)
+    override fun delete(id: UUID) = productRepository.delete(id)
 }

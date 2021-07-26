@@ -12,6 +12,7 @@ import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Put
 import io.micronaut.validation.Validated
+import java.util.*
 import javax.validation.Valid
 
 @Validated
@@ -26,16 +27,16 @@ class ProductController(private val productServicePort: ProductServicePort) {
     fun findAll() = HttpResponse.ok(ProductConverter.toListDto(productServicePort.findAll()))
 
     @Get("/{id}")
-    fun findById(@PathVariable id: Long) = HttpResponse.ok(ProductConverter.toDto(productServicePort.findById(id)))
+    fun findById(@PathVariable id: UUID) = HttpResponse.ok(ProductConverter.toDto(productServicePort.findById(id)))
 
     @Put("/{id}")
-    fun update(@PathVariable id: Long, @Valid @Body dto: ProductDto): HttpResponse<Any> {
+    fun update(@PathVariable id: UUID, @Valid @Body dto: ProductDto): HttpResponse<Any> {
         productServicePort.update(ProductConverter.toProductWithId(id, dto))
         return HttpResponse.noContent()
     }
 
     @Delete("/{id}")
-    fun delete(@PathVariable id: Long): HttpResponse<Any> {
+    fun delete(@PathVariable id: UUID): HttpResponse<Any> {
         productServicePort.delete(id)
         return HttpResponse.noContent()
     }
